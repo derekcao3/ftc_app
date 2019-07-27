@@ -27,53 +27,69 @@
  * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-package org.firstinspires.ftc.teamcode;
+package org.firstinspires.ftc.teamcode.section2;
 
 import com.qualcomm.robotcore.eventloop.opmode.OpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
-import com.qualcomm.robotcore.hardware.CRServo;
-import com.qualcomm.robotcore.hardware.DcMotor;
-import com.qualcomm.robotcore.util.Range;
 
-@TeleOp(name="Basic: Template", group="Iterative Opmode")
-public class BasicTeleopTemplate extends OpMode {
-    /*
-     * Code to run ONCE when the driver hits INIT
-     */
+
+@TeleOp(name="Basic: Telemetry", group="Iterative Opmode")
+public class BasicOpMode extends OpMode {
+int i  =0;
     @Override
     public void init() {
 
+        /*
+         * Code to run ONCE when the driver hits INIT
+         */
+
+        //The telemetry.addData() method prints information to the Driver Station
+        telemetry.addData("Status", "Initializing");
+        //1. In the stop() method, use telemetry to print the status "Robot Stopped"
+
     }
 
-    /*
-     * Code to run REPEATEDLY after the driver hits INIT, but before they hit PLAY
-     */
     @Override
     public void init_loop() {
+i++;
+        telemetry.addData("i", "%d",i);
+        /*
+         * Code to run REPEATEDLY after the driver hits INIT, but before they hit PLAY
+         */
 
     }
 
-    /*
-     * Code to run ONCE when the driver hits PLAY
-     */
     @Override
     public void start() {
+        telemetry.addData("Status", "Started");
+        /*
+         * Code to run ONCE when the driver hits PLAY
+         */
 
     }
 
-    /*
-     * Code to run REPEATEDLY after the driver hits PLAY but before they hit STOP
-     */
     @Override
     public void loop() {
 
+        /*
+         * Code to run REPEATEDLY after the driver hits PLAY but before they hit STOP
+         */
+
+        /*2. Use the telemetry object to print outputs of a button, Dpad, and joystick from gamepad1. It will
+         * continuously update because it is in loop()
+         */
+        telemetry.addData("Left Stick", "("+gamepad1.left_stick_x+", "+gamepad1.left_stick_y+")");
+        telemetry.addData("Dpad", "Left: "+gamepad1.dpad_left+" Right: "+gamepad1.dpad_right+" Up: "+gamepad1.dpad_up+" Down: "+gamepad1.dpad_down);
+
+
     }
 
-    /*
-     * Code to run ONCE after the driver hits STOP
-     */
     @Override
     public void stop() {
+telemetry.addData("Status", "Robot Stopped");
+        /*
+         * Code to run ONCE after the driver hits STOP
+         */
 
     }
 
